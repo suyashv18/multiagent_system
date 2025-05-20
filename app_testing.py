@@ -15,10 +15,13 @@ from pptx.util import Inches
 import sys 
 import sqlite3
 import pandas as pd
-
+import os
+from sentence_transformers import SentenceTransformer
 # Predefined API key and vector store paths
 api_key = st.secrets["GROQ_API_KEY"]
-embedding = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+
+embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 llm = ChatGroq(
     groq_api_key=api_key,
     model_name="llama-3.3-70b-versatile"
