@@ -31,7 +31,7 @@ llm = ChatGroq(
 @st.cache_resource
 def load_vectorstores():
     ml_vectorstore = FAISS.load_local("transformers_vdb", embedding, allow_dangerous_deserialization=True)
-    medical_vectorstore = FAISS.load_local("radiotherapy_vdb", embedding, allow_dangerous_deserialization=True)
+    medical_vectorstore = FAISS.load_local("medical_vdb", embedding, allow_dangerous_deserialization=True)
     sdlc_vectorstore = FAISS.load_local("sdlc_vdb", embedding, allow_dangerous_deserialization=True)
     # finance_vectorstore = FAISS.load_local("finance_vdb", embedding, allow_dangerous_deserialization=True)
     return ml_vectorstore, medical_vectorstore, sdlc_vectorstore
